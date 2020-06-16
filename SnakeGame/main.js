@@ -4,7 +4,8 @@ var WIDTH = window.innerWidth,
 
 var aspectRatio = WIDTH / HEIGHT;
 var renderer = new THREE.WebGLRenderer({ antialias: true }),
-    camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.01, 1000), scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.01, 1000),
+    scene = new THREE.Scene();
 
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 var clock = new THREE.Clock(), text = document.createElement("div");
@@ -32,7 +33,7 @@ var lightPos = [new THREE.Vector3(0, 50, 20),
 var end = false, keysQueue = [];
 
 var snake = [], apple;
-var cube = new THREE.BoxGeometry(1, 1, 1);
+var cube = new THREE.SphereGeometry(1, 5, 5);
 var gameCube = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
 var direction = new THREE.Vector3(1, 0, 0);
 
@@ -49,7 +50,7 @@ function init() {
     lightPos.forEach(function (v) {
         var light = new THREE.PointLight(0xffffff, 1, 100);
         light.position.set(v.x, v.y, v.z);
-        scene.add(light)
+        scene.add(light);
     });
 
     for (var i = 0; i < 5; i++) {
